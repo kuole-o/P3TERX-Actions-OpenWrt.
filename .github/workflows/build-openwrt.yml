@@ -79,12 +79,14 @@ jobs:
           git clone https://github.com/kuole-o/files.git
 
     - name: 增加LuCI主题
+      run: |    
            cat >> .config <<EOF
            CONFIG_PACKAGE_luci-theme-argon=y
            CONFIG_PACKAGE_luci-theme-netgear=y
            EOF
            
     - name: 增加koolproxyR插件        
+      run: | 
            cat >> .config <<EOF
            CONFIG_PACKAGE_luci-app-koolproxyR=y
            EOF                    
