@@ -112,12 +112,12 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Compile the firmware 编译固件-双线程
+    - name: Compile the firmware 编译固件
       id: compile
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j2 V=s
+        make -j$(nproc) || make -j1 V=s
         echo "::set-output name=status::success"
 
     - name: Upload bin directory 上传bin目录
