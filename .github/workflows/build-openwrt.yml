@@ -74,12 +74,8 @@ jobs:
     - name: 自定义network配置
       run: |
           cd /
-          mkdir files
-          cd /files
-          mkdir etc
-          cd /etc
-          mkdir config
-          cd /config
+          mkdir files/etc/config
+          cd /files/etc/config
           git clone https://github.com/kuole-o/files.git
 
     - name: 增加LuCI主题
