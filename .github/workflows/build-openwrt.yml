@@ -87,18 +87,7 @@ jobs:
     - name: 增加koolproxyR插件        
            cat >> .config <<EOF
            CONFIG_PACKAGE_luci-app-koolproxyR=y
-           EOF
-           
-    - name: 常用软件包  
-          # cat >> .config <<EOF
-          # CONFIG_PACKAGE_curl=y
-          # CONFIG_PACKAGE_htop=y
-          # CONFIG_PACKAGE_nano=y
-          # CONFIG_PACKAGE_screen=y
-          # CONFIG_PACKAGE_tree=y
-          # CONFIG_PACKAGE_vim-fuller=y
-          # CONFIG_PACKAGE_wget=y
-          # EOF          
+           EOF                    
 
     - name: Load custom configuration 加载自定义配置
       run: |
