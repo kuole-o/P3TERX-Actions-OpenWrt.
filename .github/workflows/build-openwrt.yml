@@ -64,14 +64,14 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 涡轮增雕进程-增加一个主题
+    - name: 增加一个主题
         run: |
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
           git clone https://github.com/kuole-o/luci-theme-argon.git
             
-    - name: 涡轮增雕进程-增加 KoolProxyR
+    - name: 增加 KoolProxyR
         run: |
           cd package
           mkdir openwrt-packages
