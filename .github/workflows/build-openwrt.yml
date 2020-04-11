@@ -64,25 +64,35 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 增加一个主题
+    - name: 自定义源码 主题&koolproxyR
         run: |
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
           git clone https://github.com/kuole-o/luci-theme-argon.git
-            
-    - name: 增加 KoolProxyR
-        run: |
-          cd package
-          mkdir openwrt-packages
-          cd openwrt-packages
-          git clone https://github.com/kuole-o/koolproxyR.git
+          git clone https://github.com/kuole-o/koolproxyR.git 
 
     - name: 增加LuCI主题
            cat >> .config <<EOF
            CONFIG_PACKAGE_luci-theme-argon=y
            CONFIG_PACKAGE_luci-theme-netgear=y
            EOF
+           
+    - name: 增加koolproxyR插件        
+           cat >> .config <<EOF
+           CONFIG_PACKAGE_luci-app-koolproxyR=y
+           EOF
+           
+    - name: 常用软件包  
+          # cat >> .config <<EOF
+          # CONFIG_PACKAGE_curl=y
+          # CONFIG_PACKAGE_htop=y
+          # CONFIG_PACKAGE_nano=y
+          # CONFIG_PACKAGE_screen=y
+          # CONFIG_PACKAGE_tree=y
+          # CONFIG_PACKAGE_vim-fuller=y
+          # CONFIG_PACKAGE_wget=y
+          # EOF          
 
     - name: Load custom configuration 加载自定义配置
       run: |
