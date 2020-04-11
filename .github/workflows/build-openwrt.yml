@@ -65,14 +65,14 @@ jobs:
       run: cd openwrt && ./scripts/feeds install -a
 
     - name: 下载koolproxyR源码
-        run: |
+      run: |
           cd /package/lean/
           mkdir luci-app-koolproxyR
           cd luci-app-koolproxyR
           git clone https://github.com/user1121114685/koolproxyR.git
           
     - name: 自定义network配置
-        run: |
+      run: |
           cd /
           mkdir files
           cd /files
