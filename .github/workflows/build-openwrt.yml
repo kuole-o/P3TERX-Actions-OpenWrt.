@@ -64,13 +64,23 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 自定义源码 主题&koolproxyR
+    - name: 下载koolproxyR源码
         run: |
-          cd package
-          mkdir openwrt-packages
-          cd openwrt-packages
-          git clone https://github.com/kuole-o/luci-theme-argon.git
-          git clone https://github.com/kuole-o/koolproxyR.git 
+          cd /package/lean/
+          mkdir luci-app-koolproxyR
+          cd luci-app-koolproxyR
+          git clone https://github.com/user1121114685/koolproxyR.git
+          
+    - name: 自定义network配置
+        run: |
+          cd /
+          mkdir files
+          cd /files
+          mkdir etc
+          cd /etc
+          mkdir config
+          cd /config
+          git clone https://github.com/kuole-o/files.git
 
     - name: 增加LuCI主题
            cat >> .config <<EOF
@@ -115,12 +125,12 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Compile the firmware 编译固件
+    - name: Compile the firmware 编译固件-双线程
       id: compile
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 V=s
+        make -j$(nproc) || make -j2 V=s
         echo "::set-output name=status::success"
 
     - name: Upload bin directory 上传bin目录
