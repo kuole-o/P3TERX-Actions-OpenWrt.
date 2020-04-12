@@ -47,7 +47,7 @@ jobs:
       uses: actions/checkout@v1
       with:
         repository: kuole-o/files
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        token: ${{ secrets.ACCESS_TOKEN }}
 
     - name: Initialization environment 初始化环境
       env:
