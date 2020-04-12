@@ -44,7 +44,7 @@ jobs:
       uses: actions/checkout@master
       
     - name: 链接私库
-      uses: actions/checkout@v1
+      uses: actions/checkout@master
       with:
         repository: kuole-o/files
         token: ${{ secrets.ACCESS_TOKEN }}
