@@ -43,13 +43,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
       
-    - name: 链接私库
-      uses: actions/checkout@master
-      with:
-        repository: kuole-o/my-files
-        token: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: master
-
     - name: Initialization environment 初始化环境
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -109,6 +102,13 @@ jobs:
         chmod +x $DIY_SH
         cd openwrt
         ../$DIY_SH
+        
+    - name: 链接私库
+      uses: actions/checkout@master
+      with:
+        repository: kuole-o/my-files
+        token: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: master
 
     - name: SSH connection to Actions 请连接 SSH 操作
       uses: P3TERX/debugger-action@master
