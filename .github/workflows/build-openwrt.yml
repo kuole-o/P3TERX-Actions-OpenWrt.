@@ -66,6 +66,13 @@ jobs:
            git clone https://github.com/user1121114685/koolproxyR.git
            git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
            git clone https://github.com/rosywrt/luci-theme-rosy.git 
+           
+    - name: 同步network     
+      run: |
+        cd openwrt/package/base-files
+        mkdir -p files/etc/config || true
+        cd files/etc/config  
+        git clone https://<ACCESS_TOKEN>@github.com/kuole-o/my-files 
             
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -96,17 +103,17 @@ jobs:
         cd openwrt
         ../$DIY_SH
         
-    - name: 创建一个目录
-      run: | 
-        cd openwrt
-        mkdir -p files/etc/config || true
+#    - name: 创建一个目录
+#      run: | 
+#        cd openwrt
+#        mkdir -p files/etc/config || true
         
-    - name: 链接私库      
-      uses: actions/checkout@master
-      with:
-        repository: kuole-o/my-files openwrt/files/etc/config
-        token: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: master
+#    - name: 链接私库      
+#      uses: actions/checkout@master
+#      with:
+#        repository: kuole-o/my-files 
+#        token: ${{ secrets.ACCESS_TOKEN }}
+#        BRANCH: master
 
   # - name: 移动私库同步的network文件
   #    run: | 
