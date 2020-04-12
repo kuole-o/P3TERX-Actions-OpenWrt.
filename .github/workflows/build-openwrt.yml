@@ -67,18 +67,6 @@ jobs:
            git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
            git clone https://github.com/rosywrt/luci-theme-rosy.git          
 
-    - uses: actions/checkout@v1
-      with: 
-        repository: https://github.com/kuole-o/files.git
-        token: ${{ secrets.REPO_TOKEN }}
-
-    - name: 自定义network配置
-      run: |
-          cd openwrt
-          mkdir -p files/etc/config || true
-          cd files/etc/config
-          git clone https://github.com/kuole-o/files.git 
-
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
