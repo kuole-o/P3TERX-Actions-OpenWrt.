@@ -69,9 +69,9 @@ jobs:
            
     - name: 同步network     
       run: |
-        cd openwrt/package/base-files
-        mkdir -p files/etc/config || true
-        cd files/etc/config  
+        cd openwrt
+        mkdir -p package/base-files/files/etc/config || true
+        cd package/base-files/files/etc/config  
         git clone https://<ACCESS_TOKEN>@github.com/kuole-o/my-files 
             
     - name: Update feeds
