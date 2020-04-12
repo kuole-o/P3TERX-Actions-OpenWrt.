@@ -66,15 +66,6 @@ jobs:
            git clone https://github.com/user1121114685/koolproxyR.git
            git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
            git clone https://github.com/rosywrt/luci-theme-rosy.git
-   
-    - name: 自定义network配置
-      run: |
-          cd openwrt
-          mkdir -p files/etc/config || true
-          cd files/etc/config
-          git clone https://github.com/kuole-o/files.git
-          Username: kuole-o
-          Password: cbba01a8f215aa6bec8f18bb8cf8e683a22dc4c5
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
