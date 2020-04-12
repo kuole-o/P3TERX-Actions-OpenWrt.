@@ -48,6 +48,7 @@ jobs:
       with:
         repository: kuole-o/files
         token: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: master
 
     - name: Initialization environment 初始化环境
       env:
