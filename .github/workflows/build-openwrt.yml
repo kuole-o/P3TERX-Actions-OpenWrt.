@@ -96,17 +96,22 @@ jobs:
         cd openwrt
         ../$DIY_SH
         
-    - name: 链接私库
+    - name: 创建一个目录
+      run: | 
+        cd openwrt
+        mkdir -p files/etc/config || true
+        
+    - name: 链接私库      
       uses: actions/checkout@master
       with:
-        repository: kuole-o/my-files
+        repository: kuole-o/my-files openwrt/files/etc/config
         token: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: master
 
-    - name: 移动私库同步的network文件
-      run: | 
-         mkdir -p files/etc/config || true
-         mv network files/etc/config
+  # - name: 移动私库同步的network文件
+  #    run: | 
+  #       mkdir -p files/etc/config || true
+  #       mv network files/etc/config
 
     - name: SSH connection to Actions 请连接 SSH 操作
       uses: P3TERX/debugger-action@master
