@@ -63,11 +63,18 @@ jobs:
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
-          
+       
+    - name: 下载koolproxyR源码
+      run: |
+           cd /package/lean
+           mkdir luci-app-koolproxyR
+           cd luci-app-koolproxyR
+           git clone https://github.com/user1121114685/koolproxyR.git
+   
     - name: 自定义network配置
       run: |
           cd /
-          mkdir files/etc/config
+          mkdir -p files/etc/config
           cd /files/etc/config
           git clone https://github.com/kuole-o/files.git
 
