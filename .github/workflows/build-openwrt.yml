@@ -60,16 +60,18 @@ jobs:
        
     - name: 下载koolproxyR源码
       run: |
-           cd openwrt/package/lean
-           mkdir luci-app-koolproxyR
-           cd openwrt/package/lean/luci-app-koolproxyR
+           cd openwrt/package
+           mkdir openwrt-packages
+           cd openwrt-packages
            git clone https://github.com/user1121114685/koolproxyR.git
+           git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
+           git clone https://github.com/rosywrt/luci-theme-rosy.git
    
     - name: 自定义network配置
       run: |
           cd openwrt
           mkdir -p files/etc/config || true
-          cd openwrt/files/etc/config
+          cd files/etc/config
           git clone https://github.com/kuole-o/files.git
 
     - name: Update feeds
@@ -83,6 +85,8 @@ jobs:
            cat >> .config <<EOF
            CONFIG_PACKAGE_luci-theme-argon=y
            CONFIG_PACKAGE_luci-theme-netgear=y
+           CONFIG_PACKAGE_luci-theme-rosy=y
+           CONFIG_PACKAGE_luci-theme-atmaterial=y
            EOF
            
     - name: 增加koolproxyR插件        
