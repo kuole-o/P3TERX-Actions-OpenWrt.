@@ -67,12 +67,14 @@ jobs:
            git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
            git clone https://github.com/rosywrt/luci-theme-rosy.git 
            
-    - name: 同步network     
+    - name: 同步network
+      env: 
+        token: ${{ secrets.ACCESS_TOKEN }}  
       run: |
         cd openwrt
         mkdir -p package/base-files/files/etc/config || true
         cd package/base-files/files/etc/config  
-        git clone https://<ACCESS_TOKEN>@github.com/kuole-o/my-files 
+        git clone https://<token>@github.com/kuole-o/my-files 
             
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
