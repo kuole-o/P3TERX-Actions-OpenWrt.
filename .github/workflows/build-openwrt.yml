@@ -78,8 +78,8 @@ jobs:
     #  run: |
     #     cd openwrt
     #     mkdir -p files/etc/config || true
-    #    cd files/etc/config
-    #   git clone https://github.com/kuole-o/files.git      
+    #     cd files/etc/config
+    #     mv network文件路径 /* .   
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
