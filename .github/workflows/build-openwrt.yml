@@ -60,16 +60,16 @@ jobs:
        
     - name: 下载koolproxyR源码
       run: |
-           cd openwrt && ./package/lean
+           cd ~/lean/package/lean
            mkdir luci-app-koolproxyR
-           cd openwrt && ./package/lean/luci-app-koolproxyR
+           cd ~/lean/package/lean/luci-app-koolproxyR
            git clone https://github.com/user1121114685/koolproxyR.git
    
     - name: 自定义network配置
       run: |
-          cd openwrt && ./
+          cd ~/lean
           mkdir -p files/etc/config || true
-          cd penwrt && ./files/etc/config
+          cd ~/lean/files/etc/config
           git clone https://github.com/kuole-o/files.git
 
     - name: Update feeds
