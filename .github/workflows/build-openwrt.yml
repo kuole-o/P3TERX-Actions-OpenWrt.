@@ -16,11 +16,11 @@ on:
     branches:
       - master
     paths:
-      - '.config'
+      - '.config'     
 #  schedule:
 #    - cron: 0 8 * * 5
-#  watch:
-#    types: started
+  watch:
+    types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -57,26 +57,26 @@ jobs:
 
     - name: Clone source code 克隆源代码
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+       
+    - name: 下载koolproxyR源码
+      run: |
+           cd /lean/package/lean
+           mkdir luci-app-koolproxyR
+           cd /lean/package/lean/luci-app-koolproxyR
+           git clone https://github.com/user1121114685/koolproxyR.git
+   
+    - name: 自定义network配置
+      run: |
+          cd /lean
+          mkdir -p files/etc/config || true
+          cd lean/files/etc/config
+          git clone https://github.com/kuole-o/files.git
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
-       
-    - name: 下载koolproxyR源码
-      run: |
-           cd /package/lean
-           mkdir luci-app-koolproxyR
-           cd luci-app-koolproxyR
-           git clone https://github.com/user1121114685/koolproxyR.git
-   
-    - name: 自定义network配置
-      run: |
-          cd /
-          mkdir -p files/etc/config
-          cd /files/etc/config
-          git clone https://github.com/kuole-o/files.git
 
     - name: 增加LuCI主题
       run: |    
