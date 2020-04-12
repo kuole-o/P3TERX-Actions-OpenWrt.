@@ -60,14 +60,14 @@ jobs:
        
     - name: 下载koolproxyR源码
       run: |
-           cd /lean/package/lean
+           cd lean/package/lean
            mkdir luci-app-koolproxyR
-           cd /lean/package/lean/luci-app-koolproxyR
+           cd lean/package/lean/luci-app-koolproxyR
            git clone https://github.com/user1121114685/koolproxyR.git
    
     - name: 自定义network配置
       run: |
-          cd /lean
+          cd lean
           mkdir -p files/etc/config || true
           cd lean/files/etc/config
           git clone https://github.com/kuole-o/files.git
