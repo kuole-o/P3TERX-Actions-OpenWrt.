@@ -46,7 +46,7 @@ jobs:
     - name: 链接私库
       uses: actions/checkout@v1
       with:
-        repository: my-private/repo-name
+        repository: files/kuole-o
         token: ${{ secrets.ACCESS_TOKEN }}
 
     - name: Initialization environment 初始化环境
