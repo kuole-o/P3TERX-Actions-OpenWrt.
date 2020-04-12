@@ -27,7 +27,7 @@ env:
   REPO_BRANCH: master
   CONFIG_FILE: .config
   DIY_SH: diy.sh
-  SSH_ACTIONS: true
+  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -58,7 +58,7 @@ jobs:
     - name: Clone source code 克隆源代码
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
        
-    - name: 下载koolproxyR源码
+    - name: 下载koolproxyR及主题源码
       run: |
            cd openwrt/package
            mkdir openwrt-packages
@@ -66,14 +66,7 @@ jobs:
            git clone https://github.com/user1121114685/koolproxyR.git
            git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
            git clone https://github.com/rosywrt/luci-theme-rosy.git 
-           
-    # name: 自定义network配置
-    #  run: |
-    #     cd openwrt
-    #     mkdir -p files/etc/config || true
-    #     cd files/etc/config
-    #     mv network文件路径 /* .   
-
+            
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
@@ -109,6 +102,11 @@ jobs:
         repository: kuole-o/my-files
         token: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: master
+
+    - name: 移动私库同步的network文件
+      run: | 
+         mkdir -p files/etc/config || true
+         mv network files/etc/config
 
     - name: SSH connection to Actions 请连接 SSH 操作
       uses: P3TERX/debugger-action@master
