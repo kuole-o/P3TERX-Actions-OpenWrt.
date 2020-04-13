@@ -3,3 +3,16 @@
 uci set luci.main.lang=zh_cn
 uci set luci.main.mediaurlbase=/luci-static/argon
 uci commit luci
+
+# @wifi-iface[0] 表示2.4G网络；@wifi-iface[1] 表示5G网络
+uci show wireless.@wifi-iface[0].ssid='OperWrt'
+uci show wireless.@wifi-iface[0].encryption='WPA/WPA2'
+uci show wireless.@wifi-iface[0].key='password'
+uci show wireless.@wifi-iface[1].ssid='OperWrt'
+uci show wireless.@wifi-iface[1].encryption='WPA/WPA2'
+uci show wireless.@wifi-iface[1].key='password'
+uci commit wireless
+
+# uci set wireless.encryption="WPA/WPA2"
+# uci set wireless.key="password"
+# uci commit wireless
