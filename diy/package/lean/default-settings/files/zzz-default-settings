@@ -13,6 +13,8 @@ uci set wireless.@wifi-iface[1].encryption='WPA/WPA2'
 uci set wireless.@wifi-iface[1].key='password'
 uci commit wireless
 
+sed -i 's/root:.*/root:$1$PgqmDetr$xqXbP57ysPKh9m36oycQS\/:18361:0:99999:7:::/g' etc/shadow
+
 # uci set wireless.encryption="WPA/WPA2"
 # uci set wireless.key="password"
 # uci commit wireless
