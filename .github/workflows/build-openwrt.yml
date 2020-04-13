@@ -58,7 +58,7 @@ jobs:
     - name: Clone source code 克隆源代码
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
        
-    - name: 下载koolproxyR及主题源码
+    - name: 自定义软件包或插件
       run: |
            cd openwrt/package
            mkdir openwrt-packages
@@ -75,6 +75,24 @@ jobs:
         mkdir -p package/base-files/files/etc/config || true
         cd package/base-files/files/etc/config  
         git clone https://$token@github.com/kuole-o/my-files 
+ 
+# 另一种同步私库方法，但会覆盖/清空openwrt/ 因此已弃用   
+#    - name: 创建一个目录
+#      run: | 
+#        cd openwrt
+#        mkdir -p files/etc/config || true    
+  
+#    - name: 链接私库      
+#      uses: actions/checkout@master
+#      with:
+#        repository: kuole-o/my-files 
+#        token: ${{ secrets.ACCESS_TOKEN }}
+#        BRANCH: master
+
+#    - name: 移动私库同步的network文件
+#      run: | 
+#         mkdir -p files/etc/config || true
+#         mv network files/etc/config
             
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -105,23 +123,6 @@ jobs:
         cd openwrt
         ../$DIY_SH
         
-#    - name: 创建一个目录
-#      run: | 
-#        cd openwrt
-#        mkdir -p files/etc/config || true
-        
-#    - name: 链接私库      
-#      uses: actions/checkout@master
-#      with:
-#        repository: kuole-o/my-files 
-#        token: ${{ secrets.ACCESS_TOKEN }}
-#        BRANCH: master
-
-  # - name: 移动私库同步的network文件
-  #    run: | 
-  #       mkdir -p files/etc/config || true
-  #       mv network files/etc/config
-
     - name: SSH connection to Actions 请连接 SSH 操作
       uses: P3TERX/debugger-action@master
       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
