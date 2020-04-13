@@ -16,3 +16,7 @@ sed -i 's/root::0:0:99999:7:::/root:$1$PgqmDetr$xqXbP57ysPKh9m36oycQS:0:0:99999:
 
 # sed -i 's/none/WPA/WPA2/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # sed 's/WPA/WPA2/a\set wireless.default_radio${devidx}.key=password/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+# 调用diy目录下的文件，包括zzz-default-settings文件
+cd -
+cp -Rf ../diy/* ./
