@@ -1,8 +1,8 @@
 #!/bin/sh
 
-uci set luci.main.lang=zh_cn
-uci set luci.main.mediaurlbase=/luci-static/argon
-uci commit luci
+# uci set luci.main.lang=zh_cn
+# uci set luci.main.mediaurlbase=/luci-static/argon
+# uci commit luci
 
 # @wifi-iface[0] 表示2.4G网络；@wifi-iface[1] 表示5G网络
 # uci set wireless.@wifi-iface[0].ssid='OperWrt'
