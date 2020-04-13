@@ -74,7 +74,7 @@ jobs:
         cd openwrt
         mkdir -p package/base-files/files/etc/config || true
         cd package/base-files/files/etc/config  
-        git clone https://<token>@github.com/kuole-o/my-files 
+        git clone https://$token@github.com/kuole-o/my-files 
             
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
