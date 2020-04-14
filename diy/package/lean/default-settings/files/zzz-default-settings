@@ -18,3 +18,10 @@ sed -i 's/root:.*/root:$1$PgqmDetr$xqXbP57ysPKh9m36oycQS\/:18361:0:99999:7:::/g'
 # uci set wireless.encryption="WPA/WPA2"
 # uci set wireless.key="password"
 # uci commit wireless
+
+
+
+
+
+
+exit 0
