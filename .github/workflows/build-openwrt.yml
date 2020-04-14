@@ -63,7 +63,6 @@ jobs:
            cd openwrt/package
            mkdir openwrt-packages
            cd openwrt-packages
-           git clone https://github.com/user1121114685/koolproxyR.git
            git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
            git clone https://github.com/rosywrt/luci-theme-rosy.git 
            
@@ -74,7 +73,8 @@ jobs:
         cd openwrt
         mkdir -p package/base-files/files/etc/config || true
         cd package/base-files/files/etc/config  
-        git clone https://$token@github.com/kuole-o/my-files 
+        git clone https://$token@github.com/kuole-o/my-files
+        mv /my-files/network ./ 
  
 # 另一种同步私库方法，但会覆盖/清空openwrt/ 因此已弃用   
 #    - name: 创建一个目录
