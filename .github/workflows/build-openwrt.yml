@@ -74,7 +74,8 @@ jobs:
         mkdir -p package/base-files/files/etc/config || true
         cd package/base-files/files/etc/config  
         git clone https://$token@github.com/kuole-o/my-files
-        mv /my-files/network ./ 
+        mv /my-files/network ./
+        rm -rf /my-files
  
 # 另一种同步私库方法，但会覆盖/清空openwrt/ 因此已弃用   
 #    - name: 创建一个目录
