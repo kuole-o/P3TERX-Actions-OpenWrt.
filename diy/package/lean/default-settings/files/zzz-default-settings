@@ -6,10 +6,10 @@
 
 # @wifi-iface[0] 表示2.4G网络；@wifi-iface[1] 表示5G网络
 # uci set wireless.@wifi-iface[0].ssid='OperWrt'
-uci set wireless.@wifi-iface[0].encryption='WPA/WPA2'
+uci set wireless.@wifi-iface[0].encryption='WPA1WPA2'
 uci set wireless.@wifi-iface[0].key='password'
 # uci set wireless.@wifi-iface[1].ssid='OperWrt'
-uci set wireless.@wifi-iface[1].encryption='WPA/WPA2'
+uci set wireless.@wifi-iface[1].encryption='WPA1WPA2'
 uci set wireless.@wifi-iface[1].key='password'
 uci commit wireless
 
